@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chính sách bảo mật — VN Finance Daily</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      background: #f2f2f7; color: #1c1c1e;
+      line-height: 1.6; padding: 32px 20px;
+    }
+    .shell {
+      max-width: 760px; margin: 0 auto;
+      background: #ffffff; border-radius: 16px;
+      padding: 40px 48px; box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+    }
+    .header { text-align: center; margin-bottom: 40px; padding-bottom: 32px; border-bottom: 1px solid #e5e5ea; }
+    .logo { font-size: 40px; margin-bottom: 8px; }
+    h1 { font-size: 28px; font-weight: 800; color: #1c1c1e; margin-bottom: 6px; }
+    .subtitle { font-size: 14px; color: #6c6c70; }
+    h2 {
+      font-size: 17px; font-weight: 700; color: #1c1c1e;
+      margin: 28px 0 10px; padding-bottom: 8px;
+      border-bottom: 1px solid #e5e5ea;
+    }
+    p { font-size: 14px; color: #3a3a3c; margin-bottom: 12px; }
+    ul { padding-left: 20px; margin-bottom: 12px; }
+    ul li { font-size: 14px; color: #3a3a3c; margin-bottom: 6px; }
+    strong { color: #1c1c1e; }
+    code { font-family: monospace; background: #f2f2f7; padding: 2px 6px; border-radius: 4px; font-size: 12px; }
+    a { color: #007aff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .tag {
+      display: inline-block; background: #007aff15; color: #007aff;
+      border: 1px solid #007aff30; border-radius: 8px;
+      font-size: 11px; font-weight: 600; padding: 3px 10px; margin-right: 6px;
+    }
+    .footer {
+      margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e5ea;
+      text-align: center; font-size: 12px; color: #aeaeb2;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #000; color: #fff; }
+      .shell { background: #1c1c1e; box-shadow: none; }
+      .header, h2, .footer { border-color: #38383a; }
+      h1, h2, strong { color: #fff; }
+      p, ul li { color: rgba(235,235,245,0.72); }
+      code { background: #2c2c2e; color: rgba(235,235,245,0.8); }
+      .subtitle, .footer { color: rgba(235,235,245,0.4); }
+      .tag { background: #0a84ff22; color: #0a84ff; border-color: #0a84ff44; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="header">
+      <div class="logo">📈</div>
+      <h1>Chính sách bảo mật</h1>
+      <p class="subtitle">VN Finance Daily — Chrome Extension · Phiên bản 1.4.0</p>
+    </div>
+
+    <h2>1. Tổng quan</h2>
+    <p>
+      <strong>VN Finance Daily</strong> ("Extension") là tiện ích Chrome miễn phí, tổng hợp
+      tin tức tài chính Việt Nam và cung cấp công cụ phân tích giá/tin cho nhà đầu tư cá nhân.
+      Chính sách này giải thích Extension thu thập và sử dụng dữ liệu nào.
+    </p>
+
+    <h2>2. Dữ liệu lưu cục bộ (chrome.storage.local)</h2>
+    <p>Extension lưu các dữ liệu sau <strong>trên thiết bị của bạn</strong>, không upload lên server:</p>
+    <ul>
+      <li><strong>Watchlist</strong>: danh sách mã cổ phiếu bạn theo dõi.</li>
+      <li><strong>Cảnh báo giá</strong>: điều kiện cảnh báo (mã, ngưỡng giá, thời gian tạo).</li>
+      <li><strong>Reading history</strong>: số lần click vào mã/danh mục, dùng để cá nhân hóa ranking. Chỉ lưu count, không lưu chi tiết bài đã đọc.</li>
+      <li><strong>Read state</strong>: ID của bài đã click (tối đa 300 ID), để đánh dấu "đã đọc".</li>
+      <li><strong>Theme & view mode</strong>: cài đặt dark/light, chế độ hiển thị.</li>
+      <li><strong>News cache</strong>: bản copy local của tin mới nhất để mở popup nhanh hơn.</li>
+      <li><strong>Onboarded flag</strong>: đánh dấu đã hoàn tất hướng dẫn ban đầu.</li>
+    </ul>
+    <p>
+      Bạn có thể xoá tất cả dữ liệu bất cứ lúc nào: <strong>Chrome → Settings → Extensions → VN Finance Daily → Site data → Clear</strong>, hoặc gỡ cài đặt Extension.
+    </p>
+
+    <h2>3. Dữ liệu gửi đến backend</h2>
+    <p>
+      Extension giao tiếp với backend tại <code>vn-finance-daily.fly.dev</code> để fetch tin tức
+      và dữ liệu thị trường. Các request bao gồm:
+    </p>
+    <ul>
+      <li><strong>Watchlist symbols</strong>: danh sách mã (ví dụ "FPT,VCB") để query tin liên quan. Backend không lưu danh sách này, chỉ dùng tức thời để filter.</li>
+      <li><strong>Search query</strong>: từ khóa tìm kiếm. Không log hay track.</li>
+      <li><strong>URL bài viết</strong>: khi bạn click "Tóm tắt AI", URL được gửi để fetch nội dung và xử lý qua Gemini AI.</li>
+      <li><strong>Symbol query</strong>: mã cổ phiếu khi xem chi tiết, để lấy quote real-time.</li>
+      <li><strong>Chat message</strong>: câu hỏi gửi đến ARIA AI assistant.</li>
+    </ul>
+    <p>
+      Backend <strong>không track người dùng</strong>: không analytics, không cookies, không logging IP.
+    </p>
+
+    <h2>4. Dịch vụ bên thứ ba</h2>
+    <p>Extension tương tác với các dịch vụ sau (qua backend):</p>
+    <ul>
+      <li><strong>Google Gemini AI</strong> — tóm tắt bài viết, chat ARIA, TTS. Tuân theo <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</li>
+      <li><strong>TradingView scanner</strong> — dữ liệu giá cổ phiếu VN. Tuân theo <a href="https://www.tradingview.com/policies/privacy-policy/" target="_blank">TradingView Privacy Policy</a>.</li>
+      <li><strong>Yahoo Finance</strong> — giá vàng, tỷ giá USD/VND.</li>
+      <li><strong>RSS feeds</strong> từ các báo tài chính VN — chỉ fetch nội dung công khai.</li>
+      <li><strong>TradingView chart embed</strong> — iframe biểu đồ trong phần chi tiết cổ phiếu. Cookie do TradingView quản lý.</li>
+    </ul>
+
+    <h2>5. Quyền (Permissions) sử dụng</h2>
+    <ul>
+      <li>
+        <strong>storage</strong> — lưu watchlist, cảnh báo giá, cài đặt trên thiết bị.
+      </li>
+      <li>
+        <strong>notifications</strong> — gửi Chrome notification khi có tin watchlist mới hoặc cảnh báo giá được kích hoạt.
+      </li>
+      <li>
+        <strong>alarms</strong> — chạy kiểm tra nền mỗi 5/15/30 phút để theo dõi giá và tin mới.
+      </li>
+      <li>
+        <strong>tabs</strong> — mở trang in bài báo (<code>print.html</code>) hoặc link bài gốc trong tab mới.
+      </li>
+      <li>
+        <strong>scripting</strong> — đọc nội dung bài báo từ tab đang mở (khi bạn chọn in bài), chỉ chạy khi user yêu cầu.
+      </li>
+      <li>
+        <strong>host permissions (<code>&lt;all_urls&gt;</code>)</strong> — cần thiết để: (1) hiển thị ticker bar cổ phiếu trên mọi trang web, (2) đọc nội dung bài báo qua scripting khi user chọn in. Extension không thu thập dữ liệu duyệt web của bạn.
+      </li>
+    </ul>
+
+    <h2>6. Content Script (Ticker Bar)</h2>
+    <p>
+      Extension inject một <strong>thanh ticker cổ phiếu</strong> nhỏ ở cuối trang web (trừ các trang ngân hàng được loại trừ trong manifest). Script này chỉ:
+    </p>
+    <ul>
+      <li>Hiển thị giá cổ phiếu từ watchlist của bạn (đọc từ <code>chrome.storage.local</code>).</li>
+      <li>Không đọc nội dung trang, không ghi lại URL, không gửi dữ liệu nào về server.</li>
+    </ul>
+
+    <h2>7. Đối tượng người dùng</h2>
+    <p>
+      Extension dành cho nhà đầu tư trên 18 tuổi. Chúng tôi không thu thập có chủ ý dữ liệu của trẻ vị thành niên.
+    </p>
+
+    <h2>8. Thay đổi chính sách</h2>
+    <p>
+      Khi chính sách thay đổi đáng kể, version sẽ được cập nhật và người dùng sẽ được thông báo khi mở Extension.
+    </p>
+
+    <h2>9. Liên hệ</h2>
+    <p>
+      Mọi câu hỏi hoặc khiếu nại về privacy: gửi feedback qua <a href="https://chrome.google.com/webstore" target="_blank">Chrome Web Store</a> hoặc email gostudio.chat.claude@gmail.com.
+    </p>
+
+    <div class="footer">
+      VN Finance Daily v1.4.0 · Chính sách bảo mật · Cập nhật 2026-05-23
+    </div>
+  </div>
+</body>
+</html>
