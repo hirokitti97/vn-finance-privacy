@@ -13,7 +13,7 @@
     }
     .shell {
       max-width: 760px; margin: 0 auto;
-      background: #ffffff; border-radius: 16px;
+      background: #fff; border-radius: 16px;
       padding: 40px 48px; box-shadow: 0 2px 20px rgba(0,0,0,0.08);
     }
     .header {
@@ -29,12 +29,6 @@
     .logo-wrap img { width: 100%; height: 100%; display: block; }
     h1 { font-size: 26px; font-weight: 800; color: #1c1c1e; margin-bottom: 6px; }
     .subtitle { font-size: 13px; color: #6c6c70; }
-    .badges { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; justify-content: center; }
-    .badge {
-      padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 600;
-    }
-    .b-free { background: #30d15820; color: #1a8f3c; border: 1px solid #30d15840; }
-    .b-v2   { background: #007aff20; color: #005ec4; border: 1px solid #007aff40; }
     h2 {
       font-size: 17px; font-weight: 700; color: #1c1c1e;
       margin: 28px 0 10px; padding-bottom: 8px;
@@ -50,48 +44,20 @@
     }
     a { color: #007aff; text-decoration: none; }
     a:hover { text-decoration: underline; }
-
-    /* Pricing table */
-    .plan-table { width: 100%; border-collapse: collapse; margin: 14px 0; }
-    .plan-table th, .plan-table td {
-      padding: 10px 14px; text-align: left;
-      border-bottom: 1px solid #e5e5ea; font-size: 13px;
-    }
-    .plan-table th { color: #6c6c70; font-weight: 600; background: #f9f9fb; }
-    .plan-table td { color: #3a3a3c; }
-    .plan-name { font-weight: 700; color: #1c1c1e; }
-    .tag-free { background: #30d15820; color: #1a8f3c; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; }
-    .tag-pro  { background: #007aff20; color: #005ec4; padding: 2px 8px; border-radius: 8px; font-size: 11px; font-weight: 600; }
-
-    .info-box {
-      background: #f0f6ff; border: 1px solid #007aff30; border-radius: 10px;
-      padding: 14px 16px; margin: 14px 0; font-size: 13px; color: #3a3a3c;
-    }
-    .info-box strong { color: #005ec4; }
-
     .footer {
       margin-top: 40px; padding-top: 20px; border-top: 1px solid #e5e5ea;
       text-align: center; font-size: 12px; color: #aeaeb2;
     }
-
     @media (prefers-color-scheme: dark) {
-      body { background: #000; color: #fff; }
+      body { background: #000; }
       .shell { background: #1c1c1e; box-shadow: none; }
       .header, h2, .footer { border-color: #38383a; }
       h1, h2, strong { color: #fff; }
       p, ul li { color: rgba(235,235,245,0.72); }
       code { background: #2c2c2e; color: rgba(235,235,245,0.8); }
       .subtitle, .footer { color: rgba(235,235,245,0.4); }
-      .plan-table th { background: #2c2c2e; color: rgba(235,235,245,0.5); }
-      .plan-table th, .plan-table td { border-color: #38383a; color: rgba(235,235,245,0.72); }
-      .plan-name { color: #fff; }
-      .info-box { background: #007aff15; border-color: #007aff40; color: rgba(235,235,245,0.72); }
-      .b-free { background: #30d15820; color: #30d158; border-color: #30d15840; }
-      .b-v2   { background: #0a84ff20; color: #0a84ff; border-color: #0a84ff40; }
     }
-    @media (max-width: 600px) {
-      .shell { padding: 28px 20px; }
-    }
+    @media (max-width: 600px) { .shell { padding: 28px 20px; } }
   </style>
 </head>
 <body>
@@ -102,52 +68,16 @@
       </div>
       <h1>Chính sách bảo mật</h1>
       <p class="subtitle">VN Finance Daily — Chrome Extension · v1.4.0</p>
-      <div class="badges">
-        <span class="badge b-free">v1 Miễn phí</span>
-        <span class="badge b-v2">v2 Subscription (sắp ra mắt)</span>
-      </div>
     </div>
 
     <h2>1. Tổng quan</h2>
     <p>
-      <strong>VN Finance Daily</strong> là tiện ích Chrome miễn phí (v1), tổng hợp tin tức
-      tài chính Việt Nam và cung cấp công cụ phân tích giá, AI tóm tắt tin cho nhà đầu tư cá nhân.
-      Chính sách này áp dụng cho phiên bản hiện tại và các phiên bản tương lai.
+      <strong>VN Finance Daily</strong> là tiện ích Chrome miễn phí, tổng hợp tin tức tài chính
+      Việt Nam và cung cấp công cụ phân tích giá, AI tóm tắt cho nhà đầu tư cá nhân.
+      Chính sách này giải thích Extension thu thập và sử dụng dữ liệu nào.
     </p>
 
-    <h2>2. Mô hình dịch vụ &amp; Thanh toán</h2>
-    <table class="plan-table">
-      <thead>
-        <tr>
-          <th>Gói</th>
-          <th>Trạng thái</th>
-          <th>Tính năng</th>
-          <th>Giá</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="plan-name">v1 — Free</td>
-          <td><span class="tag-free">Hiện tại</span></td>
-          <td>Tin tức AI, Thị trường, Bản tin, Watchlist, Chat ARIA</td>
-          <td>Miễn phí</td>
-        </tr>
-        <tr>
-          <td class="plan-name">v2 — Pro</td>
-          <td><span class="tag-pro">Sắp ra mắt</span></td>
-          <td>Tất cả v1 + cảnh báo nâng cao, lịch sử dài hơn, AI sâu hơn, ưu tiên hỗ trợ</td>
-          <td>Subscription (thông báo sau)</td>
-        </tr>
-      </tbody>
-    </table>
-    <div class="info-box">
-      <strong>Lưu ý:</strong> Khi v2 ra mắt, người dùng sẽ được thông báo rõ ràng qua Extension
-      trước khi bất kỳ tính năng trả phí nào được kích hoạt. Toàn bộ tính năng v1 vẫn tiếp tục
-      miễn phí. Thanh toán sẽ thực hiện qua cổng bảo mật (Stripe hoặc tương đương) — Extension
-      không trực tiếp xử lý thông tin thẻ tín dụng.
-    </div>
-
-    <h2>3. Dữ liệu lưu cục bộ (chrome.storage.local)</h2>
+    <h2>2. Dữ liệu lưu cục bộ (chrome.storage.local)</h2>
     <p>Extension lưu các dữ liệu sau <strong>trên thiết bị của bạn</strong>, không upload server:</p>
     <ul>
       <li><strong>Watchlist</strong>: danh sách mã cổ phiếu bạn theo dõi.</li>
@@ -156,11 +86,10 @@
       <li><strong>Read state</strong>: ID bài đã click (tối đa 300 ID), để đánh dấu "đã đọc".</li>
       <li><strong>Theme &amp; view mode</strong>: cài đặt dark/light, chế độ hiển thị.</li>
       <li><strong>News cache</strong>: bản copy local của tin mới nhất để mở popup nhanh hơn.</li>
-      <li><strong>Subscription state</strong> (v2): trạng thái đăng ký, lưu local sau khi xác thực từ server.</li>
     </ul>
-    <p>Bạn có thể xoá tất cả: <strong>Chrome → Settings → Extensions → VN Finance Daily → Site data → Clear</strong>, hoặc gỡ Extension.</p>
+    <p>Xoá toàn bộ: <strong>Chrome → Settings → Extensions → VN Finance Daily → Site data → Clear</strong>, hoặc gỡ Extension.</p>
 
-    <h2>4. Dữ liệu gửi đến backend</h2>
+    <h2>3. Dữ liệu gửi đến backend</h2>
     <p>Extension giao tiếp với backend tại <code>vn-finance-daily.fly.dev</code>. Các request bao gồm:</p>
     <ul>
       <li><strong>Watchlist symbols</strong>: danh sách mã (VD: "FPT,VCB") để filter tin. Backend không lưu danh sách này.</li>
@@ -171,17 +100,16 @@
     </ul>
     <p>Backend <strong>không track người dùng</strong>: không analytics, không cookies, không logging IP.</p>
 
-    <h2>5. Dịch vụ bên thứ ba</h2>
+    <h2>4. Dịch vụ bên thứ ba</h2>
     <ul>
       <li><strong>Google Gemini AI</strong> — tóm tắt bài viết, chat ARIA, TTS. Theo <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</li>
       <li><strong>TradingView scanner</strong> — dữ liệu giá cổ phiếu VN. Theo <a href="https://www.tradingview.com/policies/privacy-policy/" target="_blank">TradingView Privacy Policy</a>.</li>
       <li><strong>Yahoo Finance</strong> — giá vàng, tỷ giá USD/VND.</li>
       <li><strong>RSS feeds</strong> từ các báo tài chính VN — chỉ fetch nội dung công khai.</li>
       <li><strong>TradingView chart embed</strong> — iframe biểu đồ trong chi tiết cổ phiếu.</li>
-      <li><strong>Stripe</strong> (v2, sắp ra mắt) — cổng thanh toán subscription. Không lưu thông tin thẻ trên server của chúng tôi.</li>
     </ul>
 
-    <h2>6. Quyền (Permissions) sử dụng</h2>
+    <h2>5. Quyền (Permissions) sử dụng</h2>
     <ul>
       <li><strong>storage</strong> — lưu watchlist, cảnh báo giá, cài đặt trên thiết bị.</li>
       <li><strong>notifications</strong> — gửi Chrome notification khi có tin watchlist mới hoặc cảnh báo giá kích hoạt.</li>
@@ -191,20 +119,20 @@
       <li><strong>host_permissions (&lt;all_urls&gt;)</strong> — hiển thị ticker bar cổ phiếu trên mọi trang web. Extension không thu thập dữ liệu duyệt web.</li>
     </ul>
 
-    <h2>7. Content Script — Ticker Bar</h2>
+    <h2>6. Content Script — Ticker Bar</h2>
     <p>Extension inject thanh ticker cổ phiếu nhỏ ở cuối trang web (trừ trang ngân hàng). Script này chỉ:</p>
     <ul>
       <li>Hiển thị giá cổ phiếu từ watchlist của bạn (đọc từ <code>chrome.storage.local</code>).</li>
-      <li>Không đọc nội dung trang, không ghi URL, không gửi dữ liệu nào về server.</li>
+      <li>Không đọc nội dung trang, không ghi URL, không gửi dữ liệu về server.</li>
     </ul>
 
-    <h2>8. Đối tượng người dùng</h2>
+    <h2>7. Đối tượng người dùng</h2>
     <p>Extension dành cho nhà đầu tư trên 18 tuổi. Chúng tôi không thu thập dữ liệu của trẻ vị thành niên.</p>
 
-    <h2>9. Thay đổi chính sách</h2>
-    <p>Khi chính sách thay đổi đáng kể (đặc biệt khi ra mắt v2), người dùng sẽ được thông báo qua Extension trước khi áp dụng.</p>
+    <h2>8. Thay đổi chính sách</h2>
+    <p>Khi chính sách thay đổi đáng kể, người dùng sẽ được thông báo qua Extension trước khi áp dụng.</p>
 
-    <h2>10. Liên hệ</h2>
+    <h2>9. Liên hệ</h2>
     <p>
       Mọi câu hỏi về privacy: gửi qua
       <a href="https://chrome.google.com/webstore" target="_blank">Chrome Web Store</a>
